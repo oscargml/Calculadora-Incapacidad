@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora gratuita de incapacidades IMSS/ISSSTE. Calcula salarios, días pagos y quién paga según la Ley Federal del Trabajo. Guías legales completas.">
+    <meta name="keywords" content="calculadora incapacidades, IMSS incapacidad, incapacidad enfermedad, riesgo trabajo, maternidad IMSS, SDI">
+    <title>Calculadora de Incapacidades IMSS/ISSSTE - Guía Legal Completa 2025</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+
+        /* Header */
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 15px; }
+        header p { font-size: 1.1em; opacity: 0.95; max-width: 700px; margin: 0 auto; }
+
+        /* Nav */
+        nav { background: white; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav { text-align: center; }
+        nav a { color: #667eea; text-decoration: none; margin: 0 20px; font-weight: 500; }
+        nav a:hover { text-decoration: underline; }
+
+        /* Container */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* CTA Section */
+        .cta-section { background: white; padding: 50px 20px; margin: 40px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .cta-section h2 { color: #667eea; margin-bottom: 20px; text-align: center; font-size: 1.8em; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 40px; border-radius: 6px; text-decoration: none; font-weight: 600; text-align: center; width: 100%; max-width: 300px; margin: 0 auto; display: block; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+
+        /* Card */
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #667eea; }
+        .card h3 { color: #667eea; margin-bottom: 15px; }
+        .card p { color: #666; line-height: 1.8; margin-bottom: 15px; }
+        .card a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .card a:hover { text-decoration: underline; }
+
+        /* Blog Posts Section */
+        .blog-section { background: white; padding: 50px 20px; margin: 40px 0; border-radius: 8px; }
+        .blog-section h2 { color: #667eea; margin-bottom: 30px; text-align: center; font-size: 1.8em; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .blog-card { background: #f9f9f9; padding: 25px; border-radius: 6px; border-left: 3px solid #764ba2; transition: all 0.3s; }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .blog-card h4 { color: #333; margin-bottom: 10px; font-size: 1.1em; }
+        .blog-card p { color: #666; font-size: 0.95em; margin-bottom: 15px; }
+        .blog-card a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .blog-card a:hover { text-decoration: underline; }
+
+        /* FAQ */
+        .faq { background: white; padding: 50px 20px; margin: 40px 0; border-radius: 8px; }
+        .faq h2 { color: #667eea; text-align: center; margin-bottom: 40px; font-size: 1.8em; }
+        .faq-item { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h4 { color: #333; margin-bottom: 10px; }
+        .faq-item p { color: #666; }
+
+        /* Footer */
+        footer { background: #333; color: white; padding: 40px 20px; text-align: center; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #667eea; text-decoration: none; }
+
+        /* Info Box */
+        .info-box { background: #f0f7ff; border-left: 4px solid #667eea; padding: 25px; margin: 30px 0; border-radius: 4px; }
+        .info-box strong { color: #667eea; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            nav a { margin: 0 10px; font-size: 0.9em; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>📋 Calculadora de Incapacidades IMSS/ISSSTE</h1>
+        <p>Calcula de forma inmediata cuánto pagas, cuánto paga el IMSS y cuántos días de descanso corresponden según la Ley Federal del Trabajo mexicana</p>
+    </header>
+
+    <!-- Nav -->
+    <nav>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#blog">Guías Legales</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="container">
+        <!-- Main CTA -->
+        <section class="cta-section" id="calculadora">
+            <h2>🚀 Calcula tu Incapacidad Ahora</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Descubre exactamente cuánto recibirás durante tu incapacidad. 100% gratis, sin registro, sin anuncios.</p>
+            <a href="incapacidad-calculator.html" class="cta-button">Abrir Calculadora →</a>
+        </section>
+
+        <!-- Why This Matters -->
+        <section class="grid" style="margin-top: 60px;">
+            <div class="card">
+                <h3>💼 Para Empleados</h3>
+                <p>Descubre exactamente cuánto recibirás durante una incapacidad. Protege tus derechos laborales sabiendo qué te corresponde por ley.</p>
+            </div>
+            <div class="card">
+                <h3>👨‍⚕️ Para Doctores</h3>
+                <p>Orienta a tus pacientes sobre cuánto pagarán durante su recuperación. Copia el resultado para WhatsApp y comparte en segundos.</p>
+            </div>
+            <div class="card">
+                <h3>👔 Para HR/Recursos Humanos</h3>
+                <p>Calcula pasivos laborales y comunica con precisión a empleados cuánto pagarán durante incapacidades. Evita disputas.</p>
+            </div>
+        </section>
+
+        <!-- Blog Posts -->
+        <section class="blog-section" id="blog">
+            <h2>📚 Guías Legales Completas</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 40px;">Entiende cada tipo de incapacidad con artículos legales, cálculos reales y ejemplos prácticos.</p>
+
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <h4>¿Cuánto Me Pagan si Tengo Incapacidad por Enfermedad?</h4>
+                    <p>Guía completa sobre enfermedad general: días de carencia, 60% de pago, duración máxima y cálculos exactos.</p>
+                    <a href="blog-post-1-enfermedad-general.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>Primeros 3 Días de Incapacidad: ¿Quién Paga?</h4>
+                    <p>Explicación legal de los "días de carencia". Por qué no se pagan los primeros 3 días y qué opciones tienes.</p>
+                    <a href="blog-post-2-primeros-3-dias.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>Incapacidad por Riesgo de Trabajo: 100% desde Día 1</h4>
+                    <p>Accidentes laborales y de trayecto. Por qué recibes 100% del SDI sin días de carencia y cómo reclamarlo.</p>
+                    <a href="blog-post-3-riesgo-trabajo.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>Maternidad IMSS: 84 Días al 100%</h4>
+                    <p>Derechos de la madre: 84 días de descanso remunerado, protección contra despido, y todo lo que necesitas saber.</p>
+                    <a href="blog-post-4-maternidad.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>IMSS vs ISSSTE vs Seguro Privado</h4>
+                    <p>Comparativa completa: ¿quién paga más? Diferencias en enfermedad general, riesgo de trabajo y maternidad.</p>
+                    <a href="blog-post-5-comparativa.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>Cómo Calcular tu SDI</h4>
+                    <p>Fórmula exacta paso a paso. Qué incluye el SDI (salario base, aguinaldo, prima vacacional, Afore, etc.).</p>
+                    <a href="blog-post-6-calcular-sdi.html">Leer artículo →</a>
+                </div>
+
+                <div class="blog-card">
+                    <h4>Guía Completa: Ley Federal del Trabajo 2025</h4>
+                    <p>Referencia legal integral. Todos los tipos de incapacidad, tus derechos, protección legal, y cómo defenderte.</p>
+                    <a href="blog-post-7-guia-completa.html">Leer artículo →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" id="faq">
+            <h2>❓ Preguntas Frecuentes</h2>
+
+            <div class="faq-item">
+                <h4>¿La calculadora es 100% precisa?</h4>
+                <p>La calculadora usa la fórmula exacta de la Ley del Seguro Social mexicana. Sin embargo, factores individuales (SDI calculado por IMSS, cambios salariales recientes, bonos especiales) pueden afectar el resultado final. Úsala como referencia y verifica con IMSS si necesitas exactitud absoluta.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Debo registrarme o pagar para usar la calculadora?</h4>
+                <p>No. Es completamente gratuita, sin registro, sin anuncios, y sin recolección de datos personales. Solo ingresa tus datos y obtén el resultado.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Puedo copiar el resultado para WhatsApp?</h4>
+                <p>Sí. Después de calcular, verás un botón "Copiar para WhatsApp" que formatea el resultado de forma profesional, listo para enviar.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Qué es el SDI y cómo lo calculo?</h4>
+                <p>El SDI (Salario Diario Integrado) es tu salario base más prestaciones (aguinaldo, prima vacacional, Afore, etc.) dividido entre 30. Lee nuestro artículo "Cómo Calcular tu SDI" para la fórmula exacta paso a paso.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Esta información es válida para ISSSTE?</h4>
+                <p>Sí. ISSSTE (para empleados públicos) maneja las incapacidades de forma casi idéntica a IMSS. La calculadora funciona para ambos sistemas.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Y si tengo un seguro privado?</h4>
+                <p>El seguro privado generalmente cubre gastos médicos, pero la incapacidad (dinero durante descanso) la paga IMSS/ISSSTE. Lee nuestra comparativa IMSS vs ISSSTE vs Seguro Privado para más detalles.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Qué pasa en los primeros 3 días de incapacidad?</h4>
+                <p>En enfermedad general, los primeros 3 días (llamados "días de carencia") NO se pagan ni por empleador ni por IMSS. A partir del día 4, IMSS paga el 60% del SDI. Lee nuestro artículo sobre los primeros 3 días para más información.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>¿Es ilegal que mi empleador me despida por incapacidad?</h4>
+                <p>Sí. Tu empleador NO puede despedirte simplemente porque estés incapacitado. Eso es discriminación laboral, un delito. Puedes reportarlo a PROFEDET (01 800 717 2942).</p>
+            </div>
+        </section>
+
+        <!-- Info -->
+        <section class="info-box">
+            <strong>ℹ️ Aviso Legal:</strong> Esta calculadora y guías son información educativa basadas en la Ley Federal del Trabajo y Ley del Seguro Social vigentes en México. No constituyen asesoría legal. Para casos específicos, consulta con un abogado laboralista, IMSS, o PROFEDET. Las leyes pueden cambiar; verifica información en fuentes oficiales: <a href="https://www.imss.gob.mx" style="color: #667eea;">www.imss.gob.mx</a>, <a href="https://www.gob.mx/stps" style="color: #667eea;">www.gob.mx/stps</a>, <a href="https://www.gob.mx/profedet" style="color: #667eea;">www.gob.mx/profedet</a>.
+        </section>
+
+        <!-- Contact -->
+        <section class="cta-section" id="contacto">
+            <h2>¿Tienes una Pregunta Específica?</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Si tu caso no está cubierto en esta guía, contacta directamente a las autoridades laborales:</p>
+            <div style="text-align: center; color: #333;">
+                <p><strong>PROFEDET</strong> (Procuraduría Federal de Defensa del Trabajador)<br>
+                   Teléfono: <strong>01 800 717 2942</strong><br>
+                   Sitio: www.gob.mx/profedet</p>
+                <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
+                <p><strong>IMSS</strong> (Instituto Mexicano del Seguro Social)<br>
+                   Teléfono: <strong>01 800 623 2323</strong><br>
+                   Portal: www.imss.gob.mx</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Calculadora de Incapacidades IMSS/ISSSTE 2025</strong></p>
+        <p>Basada en la Ley Federal del Trabajo y Ley del Seguro Social mexicanas</p>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">© 2025. Información educativa gratuita. No constituye asesoría legal.</p>
+    </footer>
+</body>
+</html>
