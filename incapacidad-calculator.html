@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora gratuita de incapacidades IMSS y ISSSTE. Calcula salarios, días de descanso y quién paga según la Ley Federal del Trabajo.">
+    <meta name="keywords" content="calculadora incapacidad IMSS, incapacidad por enfermedad, riesgo de trabajo, maternidad, SDI, Ley Federal del Trabajo">
+    <title>Calculadora de Incapacidades IMSS/ISSSTE - Legal y Gratis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.05em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .legal-info {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-section h2 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-calculate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-print {
+            background: #607d8b;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background: #455a64;
+            transform: translateY(-2px);
+        }
+
+        .results {
+            display: none;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .results h3 {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .result-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-card.employer {
+            border-left-color: #ff6b6b;
+        }
+
+        .result-card.imss {
+            border-left-color: #51cf66;
+        }
+
+        .result-card.worker {
+            border-left-color: #4dabf7;
+        }
+
+        .result-label {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .breakdown {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .breakdown h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95em;
+        }
+
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: #666;
+        }
+
+        .breakdown-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .legal-summary {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .legal-summary strong {
+            color: #333;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .content {
+                padding: 30px;
+            }
+
+            .legal-info {
+                page-break-inside: avoid;
+            }
+
+            .form-section, .button-group {
+                display: none !important;
+            }
+
+            .results {
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .result-card {
+                page-break-inside: avoid;
+            }
+
+            .footer {
+                page-break-before: always;
+                border-top: 2px solid #333;
+            }
+
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+
+            button, .button-group {
+                display: none !important;
+            }
+        }
+
+        .currency-symbol {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Calculadora de Incapacidades IMSS/ISSSTE</h1>
+            <p>Calcula de forma inmediata cuánto pagas, cuánto paga el IMSS y cuántos días de descanso corresponden según la Ley Federal del Trabajo</p>
+        </div>
+
+        <div class="content">
+            <div class="legal-info">
+                <strong>Basado en:</strong> Artículos 96, 98 (Enfermedad General), 487 de la LFT & 58 de la Ley del Seguro Social (Riesgo de Trabajo), y Artículo 101 (Maternidad). Esta calculadora refleja la ley mexicana vigente.
+            </div>
+
+            <form id="calculatorForm">
+                <div class="form-section">
+                    <h2>1. Datos de la Incapacidad</h2>
+
+                    <div class="form-group">
+                        <label for="disabilityType">Tipo de Incapacidad</label>
+                        <select id="disabilityType" required>
+                            <option value="">-- Selecciona una opción --</option>
+                            <option value="general">Enfermedad General (Gripe, dolor, cirugía, etc.)</option>
+                            <option value="workplace">Riesgo de Trabajo o Trayecto (Accidente laboral)</option>
+                            <option value="maternity">Maternidad (Embarazo y parto)</option>
+                        </select>
+                        <div class="help-text">Selecciona según la causa de la incapacidad</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Fecha de Inicio de la Incapacidad</label>
+                        <input type="date" id="startDate" required>
+                        <div class="help-text">Día en que comienza el descanso médico</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">Fecha de Término de la Incapacidad</label>
+                        <input type="date" id="endDate" required>
+                        <div class="help-text">Día en que regresa a trabajar</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>2. Datos Salariales</h2>
+
+                    <div class="form-group">
+                        <label for="sdi">Salario Diario Integrado (SDI) en pesos</label>
+                        <input type="number" id="sdi" step="0.01" min="0" placeholder="Ej: 500.00" required>
+                        <div class="help-text">El SDI incluye salario base + prestaciones (fondo de ahorro, prima vacacional, etc.). Si no lo sabes, puedes estimar como tu sueldo mensual ÷ 30.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employerName">Nombre del empleado o empresa (opcional)</label>
+                        <input type="text" id="employerName" placeholder="Ej: Juan Pérez o Empresa XYZ">
+                        <div class="help-text">Para personalizar el reporte de WhatsApp e impresión</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-calculate" onclick="calculateDisability()">Calcular Incapacidad</button>
+                    <button type="button" class="btn-print hidden" id="printBtn" onclick="window.print()">🖨️ Imprimir o PDF</button>
+                    <button type="button" class="btn-whatsapp hidden" id="whatsappBtn" onclick="copyToWhatsApp()">💬 Copiar para WhatsApp</button>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Copiado al portapapeles. ¡Listo para pegar en WhatsApp!
+                </div>
+            </form>
+
+            <div class="results" id="results">
+                <h3>📊 Resultados del Cálculo</h3>
+
+                <div class="result-grid">
+                    <div class="result-card employer">
+                        <div class="result-label">💼 Paga el Empleador</div>
+                        <div class="result-value" id="employerPayment">$ 0.00</div>
+                    </div>
+                    <div class="result-card imss">
+                        <div class="result-label">🏥 Paga el IMSS</div>
+                        <div class="result-value" id="imssPayment">$ 0.00</div>
+                    </div>
+                    <div class="result-card worker">
+                        <div class="result-label">💰 Total para el Trabajador</div>
+                        <div class="result-value" id="totalPayment">$ 0.00</div>
+                    </div>
+                </div>
+
+                <div class="breakdown">
+                    <h4>Desglose Detallado</h4>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Días de incapacidad (totales):</span>
+                        <span class="breakdown-value" id="totalDays">0 días</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Días pagados al 100%:</span>
+                        <span class="breakdown-value" id="paidDays100">0 días</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Días pagados al 60%:</span>
+                        <span class="breakdown-value" id="paidDays60">0 días</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Días SIN PAGO (carencia):</span>
+                        <span class="breakdown-value" id="unpaidDays">0 días</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">SDI aplicable por día:</span>
+                        <span class="breakdown-value" id="sdiValue">$ 0.00</span>
+                    </div>
+                </div>
+
+                <div class="legal-summary" id="legalSummary">
+                    <strong>Explicación Legal:</strong>
+                    <p id="legalText" style="margin-top: 10px;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <strong>Calculadora Legal de Incapacidades IMSS/ISSSTE</strong>
+            <p style="margin-top: 10px;">Esta herramienta calcula basándose en la Ley Federal del Trabajo mexicana vigente.</p>
+            <div class="disclaimer">
+                ⚠️ <strong>Aviso Legal:</strong> Este calculador es una herramienta educativa. No constituye asesoría legal. Para casos específicos, consulta con un abogado laboralista o representante del IMSS. Los montos pueden variar según circunstancias particulares del empleado.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateDisability() {
+            const disabilityType = document.getElementById('disabilityType').value;
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+            const sdi = parseFloat(document.getElementById('sdi').value);
+
+            if (!disabilityType || !startDate || !endDate || !sdi || sdi <= 0) {
+                alert('Por favor, completa todos los campos correctamente');
+                return;
+            }
+
+            if (endDate <= startDate) {
+                alert('La fecha de término debe ser posterior a la de inicio');
+                return;
+            }
+
+            const totalDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+
+            let paidDays100 = 0;
+            let paidDays60 = 0;
+            let unpaidDays = 0;
+            let employerPay = 0;
+            let imssPay = 0;
+            let legalText = '';
+
+            if (disabilityType === 'general') {
+                // Enfermedad General: 3 días de carencia, luego IMSS paga 60%
+                unpaidDays = Math.min(3, totalDays);
+                paidDays60 = Math.max(0, totalDays - 3);
+                imssPay = paidDays60 * sdi * 0.60;
+                legalText = '<strong>Enfermedad General (Art. 96, 98 LSS):</strong> Los primeros 3 días no se pagan (días de carencia). A partir del día 4, el IMSS paga el 60% del SDI directamente al trabajador. Duración máxima: 52 semanas (extensible a 26 más con justificación).';
+            } else if (disabilityType === 'workplace') {
+                // Riesgo de Trabajo: Sin carencia, 100% desde el día 1
+                paidDays100 = totalDays;
+                imssPay = paidDays100 * sdi * 1.00;
+                legalText = '<strong>Riesgo de Trabajo o Trayecto (Art. 487 LFT, 58 LSS):</strong> Sin días de carencia. El IMSS paga el 100% del SDI desde el primer día. Si fue accidente laboral, el riesgo del empleador aumenta.';
+            } else if (disabilityType === 'maternity') {
+                // Maternidad: 84 días al 100%
+                paidDays100 = Math.min(totalDays, 84);
+                unpaidDays = Math.max(0, totalDays - 84);
+                imssPay = paidDays100 * sdi * 1.00;
+                legalText = '<strong>Maternidad (Art. 101 LSS):</strong> La madre recibe el 100% del SDI por 84 días corridos (aproximadamente 6 semanas antes del parto y 6 después). No hay días parciales ni carencia.';
+            }
+
+            const totalPayment = employerPay + imssPay;
+
+            // Mostrar resultados
+            document.getElementById('employerPayment').textContent = `$ ${employerPay.toFixed(2)}`;
+            document.getElementById('imssPayment').textContent = `$ ${imssPay.toFixed(2)}`;
+            document.getElementById('totalPayment').textContent = `$ ${totalPayment.toFixed(2)}`;
+
+            document.getElementById('totalDays').textContent = `${totalDays} días`;
+            document.getElementById('paidDays100').textContent = `${paidDays100} días`;
+            document.getElementById('paidDays60').textContent = `${paidDays60} días`;
+            document.getElementById('unpaidDays').textContent = `${unpaidDays} días`;
+            document.getElementById('sdiValue').textContent = `$ ${sdi.toFixed(2)}`;
+
+            document.getElementById('legalText').innerHTML = legalText;
+
+            document.getElementById('results').classList.add('active');
+            document.getElementById('printBtn').classList.remove('hidden');
+            document.getElementById('whatsappBtn').classList.remove('hidden');
+
+            // Scroll to results
+            setTimeout(() => {
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function copyToWhatsApp() {
+            const disabilityType = document.getElementById('disabilityType').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const sdi = parseFloat(document.getElementById('sdi').value);
+            const employerName = document.getElementById('employerName').value || 'El empleado';
+
+            const totalDays = Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)) + 1;
+
+            let typeLabel = '';
+            if (disabilityType === 'general') typeLabel = 'Enfermedad General';
+            else if (disabilityType === 'workplace') typeLabel = 'Riesgo de Trabajo';
+            else if (disabilityType === 'maternity') typeLabel = 'Maternidad';
+
+            const employerPayment = document.getElementById('employerPayment').textContent;
+            const imssPayment = document.getElementById('imssPayment').textContent;
+            const totalPayment = document.getElementById('totalPayment').textContent;
+
+            const text = `*📋 RESUMEN DE INCAPACIDAD*
+
+*Empleado:* ${employerName}
+*Tipo:* ${typeLabel}
+*Período:* ${startDate} al ${endDate}
+*Total de días:* ${totalDays} días
+*SDI:* ${sdi.toFixed(2)} pesos/día
+
+*PAGOS:*
+💼 Empleador: ${employerPayment}
+🏥 IMSS: ${imssPayment}
+💰 Total para trabajador: ${totalPayment}
+
+---
+Calculado con: Calculadora Legal de Incapacidades IMSS/ISSSTE
+https://incapacidad-calculator.vercel.app`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const msg = document.getElementById('successMessage');
+                msg.classList.add('show');
+                setTimeout(() => {
+                    msg.classList.remove('show');
+                }, 3000);
+            }).catch(() => {
+                alert('No se pudo copiar. Intenta manualmente.');
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.getElementById('calculatorForm').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                calculateDisability();
+            }
+        });
+    </script>
+</body>
+</html>

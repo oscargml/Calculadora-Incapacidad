@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cómo calcular tu SDI (Salario Diario Integrado) para incapacidades IMSS. Fórmula exacta, ejemplos y errores comunes.">
+    <meta name="keywords" content="calcular SDI, salario diario integrado, SDI IMSS, formula SDI, incapacidad SDI">
+    <title>Cómo Calcular tu SDI: Guía Completa para Entender tu Incapacidad</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; background: #f9f9f9; }
+        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #667eea; border-bottom: 3px solid #667eea; padding-bottom: 15px; }
+        h2 { color: #764ba2; margin-top: 40px; }
+        h3 { color: #555; margin-top: 25px; }
+        .meta { color: #999; font-size: 0.9em; margin-bottom: 30px; }
+        .formula-box { background: #f0f7ff; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
+        .step-box { background: #fff9e6; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .example-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #667eea; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .highlight { background: #ffeaa7; padding: 2px 6px; font-weight: bold; }
+        ul, ol { margin: 20px 0; padding-left: 25px; }
+        li { margin: 10px 0; }
+        a { color: #667eea; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #eee; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cómo Calcular tu SDI: Guía Completa para Entender tu Incapacidad</h1>
+        <div class="meta">Publicado: 2025 | Guía Técnica | Tiempo de lectura: 7 minutos</div>
+
+        <p>Cuando solicitas una incapacidad, la cantidad de dinero que recibes depende de un número clave: tu <strong>SDI (Salario Diario Integrado)</strong>. El problema es que muchos trabajadores no saben cómo calcularlo o desconocen qué incluye.</p>
+
+        <p>En esta guía te enseñamos exactamente cómo calcular tu SDI, qué prestaciones incluye, y cómo verificar que el IMSS está usando el número correcto.</p>
+
+        <h2>¿Qué es el SDI?</h2>
+
+        <p>El <strong>SDI (Salario Diario Integrado)</strong> es tu salario base <strong>más todas las prestaciones prorrateadas a nivel diario</strong>. No es solo lo que ves en tu nómina mensual.</p>
+
+        <p>El IMSS usa el SDI para calcular cuánto te paga durante incapacidades, maternidad, pensiones, y otras prestaciones.</p>
+
+        <h2>¿Qué Incluye el SDI?</h2>
+
+        <p>Tu SDI incluye:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Ejemplo</th>
+                    <th>¿Se incluye?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Salario base mensual</strong></td>
+                    <td>$15,000</td>
+                    <td>✅ Sí</td>
+                </tr>
+                <tr>
+                    <td><strong>Prima vacacional prorrateda</strong></td>
+                    <td>25% de salario ÷ 12 meses</td>
+                    <td>✅ Sí</td>
+                </tr>
+                <tr>
+                    <td><strong>Aguinaldo prorratedo</strong></td>
+                    <td>15 días de salario ÷ 12 meses</td>
+                    <td>✅ Sí</td>
+                </tr>
+                <tr>
+                    <td><strong>Fondo de ahorro (Afore)</strong></td>
+                    <td>Según empresa</td>
+                    <td>✅ Sí (aportación patronal)</td>
+                </tr>
+                <tr>
+                    <td><strong>Bonos o comisiones regulares</strong></td>
+                    <td>Si los recibes cada mes</td>
+                    <td>✅ Sí</td>
+                </tr>
+                <tr>
+                    <td><strong>Bono anual excepcional</strong></td>
+                    <td>Bono de fin de año único</td>
+                    <td>❌ No siempre</td>
+                </tr>
+                <tr>
+                    <td><strong>Vales de gasolina/comida</strong></td>
+                    <td>$200/mes</td>
+                    <td>✅ Sí (si están en nómina)</td>
+                </tr>
+                <tr>
+                    <td><strong>Transporte/pasajes</strong></td>
+                    <td>$150/mes</td>
+                    <td>✅ Sí (si están en nómina)</td>
+                </tr>
+                <tr>
+                    <td><strong>Viáticos ocasionales</strong></td>
+                    <td>Solo algunos meses</td>
+                    <td>❌ No</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>La Fórmula Exacta para Calcular SDI</h2>
+
+        <div class="formula-box">
+<strong>SDI Mensual = Salario Base + Prima Vacacional + Aguinaldo + Fondo Ahorro + Otras Prestaciones Regulares</strong>
+
+<strong>SDI Diario = SDI Mensual ÷ 30</strong>
+
+(Se usa 30 días como divisor, incluso en meses con más o menos días)
+        </div>
+
+        <h2>Paso a Paso: Cómo Calcularlo</h2>
+
+        <div class="step-box">
+            <strong>Paso 1: Obtén tu salario base mensual</strong><br>
+            Mira tu comprobante de nómina. Busca "Salario Base" o "Sueldo Base". Este es el número que aparece en tu contrato.
+        </div>
+
+        <div class="step-box">
+            <strong>Paso 2: Calcula la prima vacacional prorrateda</strong><br>
+            Fórmula: (Salario Base × 25%) ÷ 12<br>
+            Esto es porque la prima vacacional es el 25% del salario, pero se reparte en 12 meses.
+        </div>
+
+        <div class="step-box">
+            <strong>Paso 3: Calcula el aguinaldo prorratedo</strong><br>
+            Fórmula: (Salario Base × 15 días) ÷ 12<br>
+            O: (Salario Base ÷ 30) × 15 ÷ 12<br>
+            Esto es porque el aguinaldo son 15 días, repartidos en 12 meses.
+        </div>
+
+        <div class="step-box">
+            <strong>Paso 4: Suma todas las prestaciones</strong><br>
+            Salario Base + Prima Vacacional + Aguinaldo + Afore + Otros = SDI Mensual
+        </div>
+
+        <div class="step-box">
+            <strong>Paso 5: Divide entre 30</strong><br>
+            SDI Mensual ÷ 30 = SDI Diario
+        </div>
+
+        <h2>Ejemplo Completo</h2>
+
+        <div class="example-box">
+            <h3 style="margin-top: 0;">María trabaja en una empresa privada</h3>
+
+            <p><strong>Datos de la nómina:</strong></p>
+            <ul>
+                <li>Salario base mensual: $18,000</li>
+                <li>Fondo de ahorro (Afore): 8% = $1,440/mes</li>
+                <li>Vales de gasolina: $200/mes</li>
+            </ul>
+
+            <p><strong>Cálculos:</strong></p>
+
+            <table>
+                <tr>
+                    <td>Salario base</td>
+                    <td>$18,000.00</td>
+                </tr>
+                <tr>
+                    <td>Prima vacacional prorrateda</td>
+                    <td>($18,000 × 25%) ÷ 12 = $375.00</td>
+                </tr>
+                <tr>
+                    <td>Aguinaldo prorratedo</td>
+                    <td>($18,000 ÷ 30) × 15 ÷ 12 = $750.00</td>
+                </tr>
+                <tr>
+                    <td>Afore (aportación patronal)</td>
+                    <td>$1,440.00</td>
+                </tr>
+                <tr>
+                    <td>Vales de gasolina</td>
+                    <td>$200.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SDI Mensual</strong></td>
+                    <td><strong>$20,765.00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>SDI Diario</strong></td>
+                    <td>$20,765 ÷ 30 = <strong>$692.17</strong></td>
+                </tr>
+            </table>
+
+            <p><strong>Si María se incapacita por enfermedad general (10 días):</strong></p>
+
+            <ul>
+                <li>Días 1–3: $0 (carencia)</li>
+                <li>Días 4–10: 7 días × ($692.17 × 60%) = 7 × $415.30 = $2,907.10</li>
+                <li><strong>Total que recibe María: $2,907.10</strong></li>
+            </ul>
+
+            <p><strong>Si hubiera sido riesgo de trabajo:</strong></p>
+
+            <ul>
+                <li>Días 1–10: 10 × $692.17 = $6,921.70 (100%)</li>
+            </ul>
+        </div>
+
+        <h2>¿Dónde Puedo Ver Mi SDI Real?</h2>
+
+        <p>Tu empleador está obligado a reportar tu SDI al IMSS. Puedes verificarlo de dos formas:</p>
+
+        <h3>Opción 1: Portal del IMSS</h3>
+
+        <ol>
+            <li>Ve a <strong>www.imss.gob.mx</strong></li>
+            <li>Entra a "Mi IMSS" (con tu CURP y contraseña)</li>
+            <li>Busca "Historial de Cotización"</li>
+            <li>Verás tu SDI reportado cada mes</li>
+        </ol>
+
+        <h3>Opción 2: Llamar al IMSS</h3>
+
+        <ol>
+            <li>Llama a <strong>01 800 623 2323</strong> (desde cualquier teléfono)</li>
+            <li>Di tu NSS (Número de Seguridad Social)</li>
+            <li>Pide que te lean tu SDI actual</li>
+        </ol>
+
+        <h3>Opción 3: Ir a una Ventanilla del IMSS</h3>
+
+        <ol>
+            <li>Acude con tu NSS y CURP</li>
+            <li>Pide un comprobante de historial de cotización</li>
+            <li>Te dirán tu SDI de los últimos meses</li>
+        </ol>
+
+        <h2>¿Qué Pasa si Mi SDI es Muy Bajo?</h2>
+
+        <p>Si crees que tu SDI reportado al IMSS es incorrecto (muy bajo), <strong>puedes reclamarlo</strong>:</p>
+
+        <ol>
+            <li><strong>Revisa tu nómina</strong> — Verifica que todas tus prestaciones estén correctas</li>
+            <li><strong>Compara con tu cálculo</strong> — Calcula tu SDI como te mostramos arriba</li>
+            <li><strong>Avisa a tu empleador</strong> — Si hay discrepancia, pide que reporte el SDI correcto</li>
+            <li><strong>Reporta al IMSS</strong> — Si tu empleador no corrige, reporta directamente</li>
+        </ol>
+
+        <p><strong>Esto es importante:</strong> Un SDI bajo significa que durante incapacidades recibirás menos dinero. Es en tu interés verificar que sea correcto.</p>
+
+        <h2>Errores Comunes al Calcular SDI</h2>
+
+        <ul>
+            <li>❌ Olvidar el aguinaldo prorratedo — Es 15 días ÷ 12, no ignorarlo</li>
+            <li>❌ No incluir el Afore — La aportación patronal cuenta</li>
+            <li>❌ Contar viáticos ocasionales — Solo prestaciones regulares cuentan</li>
+            <li>❌ Dividir entre 30.4 en lugar de 30 — El IMSS usa 30 por ley</li>
+            <li>❌ Pensar que comisiones variables cuentan siempre — Solo si son regulares</li>
+        </ul>
+
+        <h2>¿Mi SDI Puede Cambiar?</h2>
+
+        <p>Sí. Tu SDI cambia cuando:</p>
+
+        <ul>
+            <li>Recibes un aumento de salario</li>
+            <li>Te dan un bono o comisión regular</li>
+            <li>Tu empresa cambia el monto del Afore</li>
+            <li>Cambias de puesto con diferente salario</li>
+        </ul>
+
+        <p>El IMSS recalcula tu SDI cada mes según lo que tu empleador reporte.</p>
+
+        <h2>Conclusión</h2>
+
+        <p>Tu SDI es el número más importante para entender cuánto recibirás durante una incapacidad. No es solo tu salario base, sino todo integrado: prestaciones, aguinaldo, prima vacacional, Afore, etc.</p>
+
+        <p>Calcula tu SDI como te mostramos, verifica que sea correcto en el portal del IMSS, y si ves errores, reclama. Tu dinero durante incapacidades depende de este número.</p>
+
+        <p>Para un cálculo automático y exacto, usa nuestra <a href="/incapacidad-calculator.html">calculadora gratuita de incapacidades</a>.</p>
+
+        <div class="footer">
+            <p><strong>Aviso Legal:</strong> Este artículo es información educativa. El SDI exacto se calcula según la nómina de cada trabajador. Para casos específicos, consulta con el IMSS o tu empleador.</p>
+        </div>
+    </div>
+</body>
+</html>
